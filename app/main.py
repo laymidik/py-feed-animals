@@ -24,10 +24,10 @@ class Cat(Animal):
     def __init__(
         self,
         name: str,
-        appetite: int = 3,
         is_hungry: bool = True,
     ) -> None:
-        super().__init__(name, appetite, is_hungry)
+        # Cat has fixed appetite of 3
+        super().__init__(name, 3, is_hungry)
 
     def catch_mouse(self) -> None:
         print("The hunt began!")
@@ -37,17 +37,14 @@ class Dog(Animal):
     def __init__(
         self,
         name: str,
-        appetite: int = 7,
         is_hungry: bool = True,
     ) -> None:
-        super().__init__(name, appetite, is_hungry)
+        # Dog has fixed appetite of 7
+        super().__init__(name, 7, is_hungry)
 
     def bring_slippers(self) -> None:
         print("The slippers delivered!")
 
 
-def feed_animals(animal: list[Animal]) -> int:
-    total_food = 0
-    for pet in animal:
-        total_food += pet.feed()
-    return total_food
+def feed_animals(animals: list[Animal]) -> int:
+    return sum(pet.feed() for pet in animals)
